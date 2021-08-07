@@ -4,12 +4,13 @@ import Tempcard from "./Tempcard"
 const Wheather = () => {
     const [searchvalue, setSearchvalue] = useState("Noida");
     const [newupdate, setNewupdate] =useState({});
+
     const weatherInfo = async () =>{
         try{
-       let url =`https:api.openweathermap.org/data/2.5/weather?q=${searchvalue}&units=metric&appid=e09de1cfe1c86e9269eaa27b0d1a6a1e`;
+      const url =`https:api.openweathermap.org/data/2.5/weather?q=${searchvalue}&units=metric&appid=e09de1cfe1c86e9269eaa27b0d1a6a1e`;
       const res =await fetch(url);
       const data = await res.json();
-      console.log(data);
+
       const {temp,pressure,humidity} =data.main;
       const {speed} =data.wind;
       const{main:weathermood}=data.weather[0];
@@ -27,14 +28,13 @@ const Wheather = () => {
          sunset
       };
       setNewupdate(wetheupdte);
-    }
-        catch(err){
+    } catch(err){
             console.log(err);
         }
     };
     useEffect(() => {
-       weatherInfo();
-    }, [])
+        weatherInfo();
+      },[]);
     return (
         <>
             <div className="weather-container">
@@ -49,4 +49,4 @@ const Wheather = () => {
     )
 }
 
-export default Wheather
+export default Wheather;
