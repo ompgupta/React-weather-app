@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from 'react'
+import React, { useState} from 'react'
 import "./style.css"
 import Tempcard from "./Tempcard"
 const Wheather = () => {
@@ -32,9 +32,7 @@ const Wheather = () => {
             console.log(err);
         }
     };
-    useEffect(() => {
-        weatherInfo();
-      },[]);
+    weatherInfo();
     return (
         <>
             <div className="weather-container">
