@@ -1,13 +1,14 @@
-import React, { useState} from 'react'
+import React, {useState} from 'react'
 import "./style.css"
 import Tempcard from "./Tempcard"
 const Wheather = () => {
     const [searchvalue, setSearchvalue] = useState("Noida");
     const [newupdate, setNewupdate] =useState({});
-
+    
     const weatherInfo = async () =>{
         try{
-      const url =`https:api.openweathermap.org/data/2.5/weather?q=${searchvalue}&units=metric&appid=e09de1cfe1c86e9269eaa27b0d1a6a1e`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchvalue}&units=metric&appid=${process.env.React_App_Api_Data}`;
+      console.log(url)
       const res =await fetch(url);
       const data = await res.json();
 
@@ -32,7 +33,9 @@ const Wheather = () => {
             console.log(err);
         }
     };
-    weatherInfo();
+         weatherInfo();
+
+
     return (
         <>
             <div className="weather-container">
